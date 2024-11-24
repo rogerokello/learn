@@ -12,7 +12,7 @@ jobs:
         with:
           go-version: '1.22.5'
       - name: Go to correct directory
-        run: cd go/bk1/ch1
+        run: cd go/bk1/ch1/
       - name: Install dependencies
         run: go get .
       - name: Test with the Go CLI
