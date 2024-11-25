@@ -19,3 +19,13 @@ jobs:
       - name: Test with the Go CLI
         run: go test
         working-directory: go/bk1/ch1/
+
+      - name: Test all directories where we have a go mod file
+        run: |
+          find . -type f -name "go.mod" -exec dirname {} \; | sort -u | while read dir; do
+            echo "Processing Go module in: $dir"
+            cd "$dir"
+            go get .
+            go test
+            cd -
+          done
