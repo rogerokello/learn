@@ -26,6 +26,6 @@ jobs:
             echo "Processing Go module in: $dir"
             cd "$dir"
             go get .
-            go test
+            go test ./...
             cd -
           done
