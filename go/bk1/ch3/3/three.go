@@ -31,3 +31,31 @@ func main() {
 	fmt.Println("third", third)
 
 }
+
+
+func NewEmployee(firstName string, lastName string, id int, option int) Employee {
+
+	if option == 1 {
+		return Employee {
+			firstName,
+			lastName,
+			id,
+		}
+	}
+	if option == 2 {
+		return Employee {
+			firstName: firstName,
+			lastName: lastName,
+			id: id,
+		}
+	}
+
+	// Default
+	var third Employee
+	third.firstName = firstName
+	third.lastName = lastName
+	third.id = id
+
+	return third
+
+}
