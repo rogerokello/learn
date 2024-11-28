@@ -14,4 +14,26 @@ func main() {
 	}
 
 	fmt.Println(iRand)
+
+	for _,v := range iRand {
+		fmt.Println(v)
+		if v % 2 == 0 && v % 3 == 0 {
+			fmt.Println("Six")
+			continue
+		}
+
+		if v % 2 == 0 {
+			fmt.Println("Two")
+			continue
+		}
+
+		if v % 3 == 0 {
+			fmt.Println("Six")
+			continue
+		}
+
+		fmt.Println("Never mind")
+
+	}
+
 }
