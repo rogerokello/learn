@@ -23,7 +23,7 @@ func TestEmployee(t *testing.T) {
 			Employee{firstName, lastName, 1},
 		},
 		{
-			"Option 2", firstName, lastName, id, 3,
+			"Option 3", firstName, lastName, id, 3,
 			Employee{firstName, lastName, 1},
 		},
 	}
@@ -32,7 +32,7 @@ func TestEmployee(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 				result := NewEmployee(tc.firstName,tc.lastName,tc.id,tc.option)
 				if result != tc.expected {
-						t.Errorf("Expected %q, got %q", tc.expected, result)
+						t.Errorf("Expected %+v, got %+v", tc.expected, result)
 				}
 		})
 	}
