@@ -16,24 +16,20 @@ func main() {
 	fmt.Println(iRand)
 
 	for _,v := range iRand {
-		fmt.Println(v)
-		if v % 2 == 0 && v % 3 == 0 {
+		switch {
+		case v % 2 == 0 && v % 3 == 0:
+			fmt.Println(v)
 			fmt.Println("Six")
-			continue
-		}
-
-		if v % 2 == 0 {
+		case v % 2 == 0:
+			fmt.Println(v)
 			fmt.Println("Two")
-			continue
-		}
-
-		if v % 3 == 0 {
+		case v % 3 == 0:
+			fmt.Println(v)
 			fmt.Println("Six")
-			continue
+		default:
+			fmt.Println(v)
+			fmt.Println("Never mind")
 		}
-
-		fmt.Println("Never mind")
-
 	}
 
 }
