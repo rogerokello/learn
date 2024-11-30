@@ -9,6 +9,13 @@ type operation func (int, int) int
 
 var opMap = map[string] operation {}
 
+var (
+	add = func(i,j int) int { return i + j }
+	sub = func(i,j int) int { return i - j }
+	mult = func(i,j int) int { return i * j }
+	div = func(i,j int) int { return i / j }
+)
+
 func main() {
 
 	opMap["+"] = add
@@ -51,23 +58,4 @@ func main() {
 		fmt.Println("Result is", result)
 	}
 
-}
-
-func add (a int, b int) int {
-	return a + b
-}
-
-func mult (a int, b int) int {
-	return a * b
-}
-
-func sub (a int, b int) int {
-	return a - b
-}
-
-func div (a int, b int) int {
-	if b == 0 {
-		return 0
-	}
-	return a / b
 }
