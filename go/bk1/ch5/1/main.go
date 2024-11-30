@@ -17,6 +17,7 @@ func main() {
 	items := [][]string{
 		{"2", "+", "3"},
 		{"3", "-", "2"},
+		{"4"},
 		{"5", "*", "6"},
 		{"6", "/", "2"},
 		{"fsdf", "/", "2"},
@@ -25,6 +26,10 @@ func main() {
 	}
 
 	for _, item := range items {
+		if len(item) != 3 {
+			fmt.Println("Items must be of length three. Eg. {\"2\"-\"1\"}")
+			continue
+		}
 		oprnd1, err := strconv.Atoi(item[0])
 		if err != nil {
 			fmt.Println("Invalid option for the first operand, it must be a number")
