@@ -5,7 +5,9 @@ import (
 	"strconv"
 )
 
-var opMap = map[string] func (int, int) int {}
+type operation func (int, int) int
+
+var opMap = map[string] operation {}
 
 func main() {
 
