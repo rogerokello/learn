@@ -19,6 +19,9 @@ func main() {
 		{"3", "-", "2"},
 		{"5", "*", "6"},
 		{"6", "/", "2"},
+		{"fsdf", "/", "2"},
+		{"4", "/fffff", "2"},
+		{"5", "/", "2fafdada"},
 	}
 
 	for _, item := range items {
@@ -34,7 +37,7 @@ func main() {
 		}
 		oprnd2, err := strconv.Atoi(item[2])
 		if err != nil {
-			fmt.Println("Invalid option for the first operand, it must be a number")
+			fmt.Println("Invalid option for the Second operand, it must be a number")
 			continue
 		}
 		result := operation(oprnd1, oprnd2)
