@@ -13,13 +13,11 @@ func main() {
 		log.Fatal("You must supply atleast two arguments ")
 	}
 
-	file_name := os.Args[1]
-
-	f, error := os.Open(file_name)
-	if error != nil {
-		log.Fatal(error)
+	f, closer, err := getFile(os.Args[1])
+	if err != nil {
+		log.Fatal(err)
 	}
-	defer f.Close()
+	defer closer()
 
 	buffer := make([]byte, 2048)
 
@@ -38,4 +36,16 @@ func main() {
 	}
 	fmt.Println("it took ", time.Since(start).Seconds(), " seconds")
 
+}
+
+func getFile(name string) (*os.File, func(), error) {
+	f, error := os.Open(name)
+
+	if error != nil {
+		return nil, nil, error
+	}
+
+	return f, func() {
+		f.Close()
+	}, nil
 }
