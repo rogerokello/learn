@@ -1,9 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"io"
-	"os"
 	"log"
+	"os"
+	"time"
 )
 
 func main() {
@@ -21,16 +23,19 @@ func main() {
 
 	buffer := make([]byte, 2048)
 
+	start := time.Now()
 	for {
 		count, error := f.Read(buffer)
 		os.Stdout.Write(buffer[:count])
 
-		if error != nil {
-			if error != io.EOF {
-				log.Fatal(error, count)
-			}
+		if error != nil && error == io.EOF {
 			break
 		}
+
+		if error != nil {
+			log.Fatal(error, count)
+		}
 	}
+	fmt.Println("it took ", time.Since(start).Seconds(), " seconds")
 
 }
