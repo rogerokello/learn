@@ -3,18 +3,12 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"errors"
 )
 
-type operation func (int, int) int
+type operation func(int, int) (int, error)
 
 var opMap = map[string] operation {}
-
-var (
-	add = func(i,j int) int { return i + j }
-	sub = func(i,j int) int { return i - j }
-	mult = func(i,j int) int { return i * j }
-	div = func(i,j int) int { return i / j }
-)
 
 func main() {
 
@@ -29,6 +23,7 @@ func main() {
 		{"4"},
 		{"5", "*", "6"},
 		{"6", "/", "2"},
+		{"5", "/", "0"},
 		{"fsdf", "/", "2"},
 		{"4", "/fffff", "2"},
 		{"5", "/", "2fafdada"},
@@ -54,8 +49,32 @@ func main() {
 			fmt.Println("Invalid option for the Second operand, it must be a number")
 			continue
 		}
-		result := operation(oprnd1, oprnd2)
+		result, err := operation(oprnd1, oprnd2)
+		if err != nil {
+			fmt.Println(err)
+			continue
+		} 
 		fmt.Println("Result is", result)
 	}
 
+}
+
+func add(i, j int) (int, error) {
+	return i + j, nil
+}
+
+func sub(i, j int) (int, error) {
+	return i - j, nil
+}
+
+func mult(i, j int) (int, error) {
+	return i * j, nil
+}
+
+func div(i, j int) (int, error) {
+	if j == 0 {
+		return 0, errors.New("division by zero")
+	}
+
+	return i / j, nil
 }
