@@ -16,6 +16,9 @@ jobs:
       - name: Install dependencies
         run: go get .
         working-directory: go/bk1/ch1/
+      - name: Show escapes to the heap when we return pointers
+        run: go get . && go build -gcflags="-m" main.go 
+        working-directory: go/bk1/ch6/2
       - name: Test with the Go CLI
         run: go test
         working-directory: go/bk1/ch1/
