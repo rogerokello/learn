@@ -18,14 +18,14 @@ func main() {
 		"Okello",
 		20,
 	}
-	i, ok := i.(Person)
+	j, ok := i.(Person)
 	if !ok {
-		fmt.Printf("Invalid type specified for type with value %T \n", i)
+		fmt.Printf("Invalid type specified for type with value %T \n", j)
 	}
 
-	j, ok := i.(Employee)
+	k, ok := i.(Employee)
 
 	if !ok {
-		fmt.Printf("Invalid type specified for type with value %v \n", j)
+		fmt.Printf("Invalid type specified for type with value %v \n", k)
 	}
 }
