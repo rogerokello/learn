@@ -83,6 +83,9 @@ func main() {
 	l.MatchResult("Uganda", 1, "Kenya", 2)
 	l.MatchResult("Tanzania", 3, "Kenya", 2)
 	l.MatchResult("Uganda", 4, "Tanzania", 2)
+	l.MatchResult("Uganda", 2, "Kenya", 2)
+	l.MatchResult("Tanzania", 3, "Kenya", 2)
+	l.MatchResult("Uganda", 4, "Tanzania", 2)
 	l.Ranking()
 	RankerPrinter(l, os.Stdout)
 }
