@@ -12,11 +12,21 @@ type Team struct{
 }
 
 type League struct{
-	Teams []Team
+	Name string
+	Teams map[string]Team
 	Wins map[string]int
 }
 
 func (l *League) MatchResult(firstTeam string, firstTeamScore int, secondTeam string, secondTeamScore int) {
+	if _,ok := l.Teams[firstTeam]; !ok {
+		return
+	}
+	if _,ok := l.Teams[secondTeam]; !ok {
+		return
+	}
+	if firstTeamScore == secondTeamScore {
+		return
+	}
 	if firstTeamScore > secondTeamScore {
 		l.Wins[firstTeam]++
 	}
@@ -62,7 +72,11 @@ func main() {
 	}
 
 	l := &(League{
-		Teams: []Team{ug,kn,tz},
+		Teams: map[string]Team{
+			"Uganda": ug,
+			"Kenya": kn,
+			"Tanzania": tz,
+		},
 		Wins: make(map[string]int),
 	})
 
