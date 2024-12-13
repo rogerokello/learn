@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-type Queue[T any] struct {
+type Queue[T comparable] struct {
 	vals []T
 }
 
@@ -38,12 +38,22 @@ func (q *Queue[T]) remove() (bool, T) {
 	return true, next
 }
 
+func (qu *Queue[T]) Contains(item T) bool {
+	for _, val := range qu.vals {
+		if val == item {
+			return true
+		}
+	}
+	return false
+}
+
 func main() {
 	qu := &Queue[int]{}
 	qu.add(1)
 	qu.add(2)
 	qu.add(3)
 	qu.add(4)
+	fmt.Println("Does 4 exist in qu: ", qu.Contains(4))
 
 	fmt.Println(qu.remove())
 	fmt.Println(qu.remove())
@@ -51,4 +61,6 @@ func main() {
 	fmt.Println(qu.remove())
 	fmt.Println(qu.remove())
 	fmt.Println(qu.remove())
+
+	fmt.Println("Does 4 exist in qu: ", qu.Contains(4))
 }
