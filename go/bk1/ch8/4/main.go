@@ -7,6 +7,8 @@ import (
 	// "os"
 )
 
+type Callable func(*big.Int,*big.Int)big.Int
+
 
 func Factorial(n int,f func(*big.Int,*big.Int)big.Int) (big.Int, error) {
 	acc := big.NewInt(1)
@@ -25,6 +27,14 @@ func Factorial(n int,f func(*big.Int,*big.Int)big.Int) (big.Int, error) {
 
 	return *acc, nil
 }
+
+func callable(u1 *big.Int, u2 *big.Int) big.Int {
+	defM := big.NewInt(1)
+
+	return *(defM.Mul(u1, u2))
+}
+
+var Called Callable = callable
 
 func main() {
 	var n int
